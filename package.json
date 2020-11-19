@@ -1,0 +1,21 @@
+{
+  "name": "note-app-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wyounis25/Note-Exchange-Backend.git"
+  },
+  "author": "walid",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wyounis25/Note-Exchange-Backend/issues"
+  },
+  "homepage": "https://github.com/wyounis25/Note-Exchange-Backend#readme"
+}

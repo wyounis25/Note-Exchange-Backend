@@ -1,6 +1,9 @@
 import mongoose from 'mongoose';
+import dotenv from 'dotenv'
 
- const connection_url = "mongodb+srv://admin:yzbsrZaIS225waQt@notes.ivma7.mongodb.net/admin?retryWrites=true&w=majority"
+
+
+const connection_url = "mongodb+srv://admin:rWh6393k5rjMcH6M@notes.ivma7.mongodb.net/note-exange?retryWrites=true&w=majority"
 
 const connectDB = async () => {
 	try {

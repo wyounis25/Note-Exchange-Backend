@@ -4,20 +4,14 @@ import note from './data/Note.js'
 import dotenv from 'dotenv'
 import connectDB from './config/db.js'
 
-// const connection_url = "mongodb+srv://admin:yzbsrZaIS225waQt@notes.ivma7.mongodb.net/admin?retryWrites=true&w=majority"
+// const connection_url = "mongodb+srv://admin:yzbsrZaIS225waQt@notes.ivma7.mongodb.net/note-exange?retryWrites=true&w=majority"
 dotenv.config()
 //App Config
 const app = express()
-const port = process.env.PORT || 2525
+const port = process.env.PORT || 8000
  connectDB()
 //MiddleWare
 // app.use(Cors())
-
-// mongoose.connect(connection_url, {
-// 	useNewUrlParser: true,
-// 	useCreateIndex: true,
-// 	useUnifiedTopology: true
-// });
 
 //API Endpoints
 app.get('/',(req,res) => {

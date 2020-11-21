@@ -3,6 +3,7 @@ import Cors from 'cors'
 import dotenv from 'dotenv'
 import connectDB from './config/db.js'
 import noteRoutes from './routes/notesroutes.js'
+import userRoutes from './routes/usersroutes.js'
 
 // const connection_url = "mongodb+srv://admin:yzbsrZaIS225waQt@notes.ivma7.mongodb.net/note-exange?retryWrites=true&w=majority"
 dotenv.config()
@@ -13,6 +14,7 @@ const port = process.env.PORT || 8000
 //MiddleWare
 // app.use(Cors())
 app.use('/notes', noteRoutes)
+app.use('/users',userRoutes)
 //API Endpoints
 app.get('/',(req,res) => {
     res.status(200).send("HELLO WORLD!!!")

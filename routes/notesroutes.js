@@ -23,6 +23,7 @@ router.get("/:id", asyncHandler( async(req, res) => {
     res.status(404).json({message: "note not found"})
   }
 }));
+
 // app.post("/notes/", (req, res) => {
     //     const notes = req.body;
     

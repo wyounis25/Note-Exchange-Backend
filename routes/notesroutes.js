@@ -1,6 +1,7 @@
 import express from 'express'
 import Note from '../models/NoteModel.js'
 import asyncHandler from 'express-async-handler'
+import auth from './auth.js'
 const router = express.Router()
 
 // DESC FETCH ALL NOTES
@@ -24,17 +25,14 @@ router.get("/:id", asyncHandler( async(req, res) => {
   }
 }));
 
-// app.post("/notes/", (req, res) => {
-    //     const notes = req.body;
-    
-    //     note.create(notes, (err, data) => {
-//         if (err) {
-//             res.status(500).send(err);
-//         } else {
-//             res.status(201).send(data);
-//         }
-//     });
-// });
+router.delete("/delete", auth, async (req, res) => {
+  try {
+    const deleteNote = await Note.findByIdAndDelete(req.note)
+    res.json(deleteNote)
+  } catch (err) {
+    res.status(500).json({error: err.message})
+  }
+})
 
 export default router
 

@@ -14,6 +14,7 @@ const port = process.env.PORT || 8000;
 connectDB();
 //MiddleWare when we interact with any route with express
 app.use(Cors());
+app.use(express.json())
 app.use('/notes', noteRoutes);
 app.use('/users', userRoutes);
 //API Endpoints

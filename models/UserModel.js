@@ -1,6 +1,5 @@
 import mongoose from 'mongoose';
 import bycrypt from 'bcryptjs';
-import userrouter from '../routes/usersroutes';
 const userSchema = mongoose.Schema(
 	{
 		name: {

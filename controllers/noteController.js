@@ -1,4 +1,5 @@
 import Note from '../models/NoteModel.js'
+
 import asyncHandler from 'express-async-handler'
 
 // DESC FETCH ALL NOTES
@@ -22,4 +23,25 @@ const getNoteById = asyncHandler (async (req, res) => {
     }
   })
 
-  export { getNoteById, getNotes} 
+const postNote = asyncHandler( async (req,res)=> {
+  const {category, label, content, user} = req.body
+  const newNote = await Note.create({
+    category,
+    label,
+    content,
+    user
+  })
+  if (newNote) {
+    res.status(200).json({
+      category: newNote.category,
+      label: newNote.label,
+      content: newNote.content,
+      user: ""
+    })
+  } else {
+    res.status(400)
+    throw new Error ('Invalid information')
+  }
+})
+
+  export { getNoteById, getNotes , postNote} 

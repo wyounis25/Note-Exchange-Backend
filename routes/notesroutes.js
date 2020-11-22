@@ -1,10 +1,11 @@
 import express from 'express'
 import auth from './auth.js'
 const router = express.Router()
-import { getNotes, getNoteById } from '../controllers/noteController.js'
+import { getNotes, getNoteById, postNote } from '../controllers/noteController.js'
 
 router.route('/').get(getNotes)
 router.route('/:id').get(getNoteById)
+router.route('/').post(postNote)
 
 
 

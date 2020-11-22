@@ -1,6 +1,5 @@
 import User from '../models/UserModel.js';
 import asyncHandler from 'express-async-handler';
-import genTok from '../util/token.js';
 import gentoken from '../util/token.js';
 // DESC FETCH ALL USER
 // ROUTE  GET  USER

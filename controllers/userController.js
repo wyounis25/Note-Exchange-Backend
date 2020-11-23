@@ -46,14 +46,14 @@ const registerUser = asyncHandler(async (req, res) => {
 	if (!name || !username || !password) return res.status(400).json({ msg: 'Please fill in all fields' });
 	if (password.length < 6) return res.status(400).json({ msg: 'minimum of six characters' });
 	const existingUser = await User.findOne({ username });
-	const token = jwt.sign({ id: user._id }, "secretshh");
 	if (existingUser) return res.status(400).json({ msg: 'user with this username already exist' });
-
+	
 	const user = await User.create({
 		name,
 		username,
 		password
 	});
+	const token = jwt.sign({ id: user._id }, "secretshh");
 	if (user) {
 		res.status(201).json({
 			_id: user._id,

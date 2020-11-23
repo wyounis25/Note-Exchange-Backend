@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 
 const gentoken = (id) => {
-	jwt.sign({ id }, process.env.JWT_PASS, {
+	jwt.sign({ id }, "chicken", {
 		expiresIn: '40d'
 	});
 };

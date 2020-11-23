@@ -5,11 +5,11 @@ import {protect} from '../middleware/authMiddleware.js'
 import {registerUser, authUser,getUser,getUserById, getUserProfile} from '../controllers/userController.js'
 const userrouter = express.Router();
 
+userrouter.route('/').post(registerUser)
+userrouter.route('/login').post(authUser)
 userrouter.route('/').get(getUser)
 userrouter.route('/:id').get(getUserById)
-userrouter.route('/').post(registerUser)
 userrouter.route('/profile').get(protect,getUserProfile)
-userrouter.post('/login', authUser)
 
 
 

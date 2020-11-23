@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import bycrypt from 'bcryptjs';
+import bcrypt from 'bcryptjs';
 const userSchema = mongoose.Schema(
 	{
 		name: {
@@ -8,13 +8,11 @@ const userSchema = mongoose.Schema(
 		},
 		username: {
 			type: String,
-			required: true,
-			unique: true
+			required: true
 		},
 		password: {
 			type: String,
-			required: true,
-			minlength: 6
+			required: true
 		}
 	},
 	{
@@ -23,14 +21,14 @@ const userSchema = mongoose.Schema(
 );
 
 userSchema.methods.matchPassword = async function(enteredPassword) {
-	return await bycrypt.compare(enteredPassword, this.password);
+	return await bcrypt.compare(enteredPassword, this.password);
 };
 
 userSchema.pre('save', async function(next) {
 	if (!this.isModified('password')) {
 		next();
 	}
-	const salt = bcrypt.genSalt(10);
+	const salt = await bcrypt.genSalt(10);
 	this.password = await bcrypt.hash(this.password, salt);
 });
 const User = mongoose.model('User', userSchema);

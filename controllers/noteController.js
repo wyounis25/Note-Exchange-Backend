@@ -1,6 +1,6 @@
 import Note from '../models/NoteModel.js'
-
 import asyncHandler from 'express-async-handler'
+import User from '../models/UserModel.js'
 
 // DESC FETCH ALL NOTES
 // ROUTE  GET  NOTE
@@ -24,20 +24,17 @@ const getNoteById = asyncHandler (async (req, res) => {
   })
 
 const postNote = asyncHandler( async (req,res)=> {
-  const {category, label, content, user} = req.body
+  const {category, label, content} = req.body
+  const user = await User.findById(req.user.id)
+
   const newNote = await Note.create({
     category,
     label,
     content,
-    user
+    user:req.user
   })
   if (newNote) {
-    res.status(200).json({
-      category: newNote.category,
-      label: newNote.label,
-      content: newNote.content,
-      user: ""
-    })
+    res.status(200)
   } else {
     res.status(400)
     throw new Error ('Invalid information')

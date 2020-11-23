@@ -1,6 +1,8 @@
 import User from '../models/UserModel.js';
 import asyncHandler from 'express-async-handler';
 import gentoken from '../util/token.js';
+import jwt from 'jsonwebtoken';
+
 // DESC FETCH ALL USER
 // ROUTE  GET  USER
 // ACESS PUBLIC
@@ -22,39 +24,42 @@ const getUserById = asyncHandler(async (req, res) => {
 });
 
 const authUser = asyncHandler(async (req, res) => {
-	const { username, pasword } = req.body;
+	const { username, password } = req.body;
 	const user = await User.findOne({ username });
+	const token = jwt.sign({ id: user._id }, "secretshh");
+
 	if (user && (await user.matchPassword(password))) {
 		res.json({
 			_id: user._id,
 			name: user.name,
 			username: user.username,
-			token: gentoken(user._id)
+			token: token
 		});
 	} else {
 		res.status(401);
-		throw new Error('Invalid email or password');
+		throw new Error('Invalid username or password');
 	}
 });
 
 const registerUser = asyncHandler(async (req, res) => {
-	const { name, username, pasword } = req.body;
+	const { name, username, password } = req.body;
 	if (!name || !username || !password) return res.status(400).json({ msg: 'Please fill in all fields' });
 	if (password.length < 6) return res.status(400).json({ msg: 'minimum of six characters' });
 	const existingUser = await User.findOne({ username });
+	const token = jwt.sign({ id: user._id }, "secretshh");
 	if (existingUser) return res.status(400).json({ msg: 'user with this username already exist' });
 
-	const newUser = await User.create({
+	const user = await User.create({
 		name,
 		username,
 		password
 	});
-	if (newUser) {
+	if (user) {
 		res.status(201).json({
 			_id: user._id,
 			name: user.name,
 			username: user.username,
-			token: gentoken(user._id)
+			token: token
 		});
 	} else {
 		res.status(400);

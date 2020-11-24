@@ -18,9 +18,7 @@ userrouter.route('/profile').get(protect,getUserProfile)
 // 	asyncHandler(async (req, res) => {
 // 		try {
 // 			let { name, username, password } = req.body;
-
 // 			//validations
-
 // 			if (!name || !username || !password) return res.status(400).json({ msg: 'Please fill in all fields' });
 // 			if (password.length < 6) return res.status(400).json({ msg: 'minimum of six characters' });
 // 			const existingUser = await User.findOne({ username });
@@ -28,7 +26,6 @@ userrouter.route('/profile').get(protect,getUserProfile)
 // 			if (!name) name = username;
 // 			const salt = await bcrypt.genSalt();
 // 			const passwordHash = await bcrypt.hash(password, salt);
-
 // 			const newUser = await User.create({
 // 				name,
 // 				username,
@@ -40,13 +37,11 @@ userrouter.route('/profile').get(protect,getUserProfile)
 // 		}
 // 	})
 // );
-
 // userrouter.post(
 // 	'/login',
 // 	asyncHandler(async (req, res) => {
 // 		try {
 // 			const { username, password } = req.body;
-
 // 			//validation
 // 			if (!username || !password) return res.status(400).json({ msg: 'Please fill in all the blanks' });
 // 			const user = await User.findOne({ username });
@@ -67,7 +62,6 @@ userrouter.route('/profile').get(protect,getUserProfile)
 // 		}
 // 	})
 // );
-
 // userrouter.post('/tokenIsValid', async (req, res) => {
 // 	try {
 // 		const token = req.header('x-auth-token');

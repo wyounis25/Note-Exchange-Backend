@@ -27,7 +27,6 @@ const authUser = asyncHandler(async (req, res) => {
 	const { username, password } = req.body;
 	const user = await User.findOne({ username });
 	const token = jwt.sign({ id: user._id }, "secretshh");
-
 	if (user && (await user.matchPassword(password))) {
 		res.json({
 			_id: user._id,

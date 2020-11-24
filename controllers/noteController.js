@@ -24,13 +24,15 @@ const getNoteById = asyncHandler (async (req, res) => {
   })
 
 const postNote = asyncHandler( async (req,res)=> {
-  const {category, label, content,user} = req.body
+  const {category, label, content, price, user} = req.body
   const newNote = await Note.create({
     category,
     label,
     content,
-    user
+    price,
+    user,
   })
+
   if (newNote) {
     res.status(200)
   } else {

@@ -4,6 +4,7 @@ const notes = [
         category: "Science",
         label: "Neuroscience",
         content: "this is the content",
+        price: 500,
         user:null
         
     },
@@ -13,6 +14,7 @@ const notes = [
         category: "Science",
         label: "Biology",
         content: "this is the another content",
+        price: 250,
         user:null
     }
 

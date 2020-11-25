@@ -13,6 +13,7 @@ const getNotes = asyncHandler(async (req, res) => {
 // DESC FETCH SINGLE NOTES
 // ROUTE  GET  NOTE/:ID
 // ACESS PUBLIC
+
 const getNoteById = asyncHandler(async (req, res) => {
 	const note = await Note.findById(req.params.id);
 	if (note) {
@@ -40,4 +41,15 @@ const postNote = asyncHandler(async (req, res) => {
 	}
 });
 
-export { getNoteById, getNotes, postNote };
+const deleteNote = asyncHandler(async (req, res) => {
+	const notes = await Note.findById(req.params.id);
+
+	if (notes) {
+		await product.remove();
+		res.json({ msg: 'deleted' });
+	} else {
+		res.status(500).json({ error: err.message });
+	}
+});
+
+export { getNoteById, getNotes, postNote, deleteNote };

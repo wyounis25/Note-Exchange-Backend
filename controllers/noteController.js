@@ -14,6 +14,8 @@ const getNotes = asyncHandler(async (req, res) => {
 // ROUTE  GET  NOTE/:ID
 // ACESS PUBLIC
 
+
+//GET
 const getNoteById = asyncHandler(async (req, res) => {
 	const note = await Note.findById(req.params.id);
 	if (note) {
@@ -23,6 +25,8 @@ const getNoteById = asyncHandler(async (req, res) => {
 	}
 });
 
+
+//POST
 const postNote = asyncHandler(async (req, res) => {
 	const { category, label, content, price, user } = req.body;
 	const newNote = await Note.create({
@@ -34,13 +38,36 @@ const postNote = asyncHandler(async (req, res) => {
 	});
 
 	if (newNote) {
-		res.status(200);
+		res.status(200).json(newNote);
 	} else {
 		res.status(400);
 		throw new Error('Invalid information');
 	}
 });
 
+
+// UPDATE
+const updateNote = asyncHandler(async (req, res) => {
+	const { category, label, content, price } = req.body;
+	const notes = await Note.findById(req.params.id);
+
+
+	if (notes) {
+		notes.category = category
+		notes.label = label
+		notes.content = content
+		notes.price = price
+
+		const updateNote = await prdouct.save()
+		res.json(updateNote)
+	} else {
+		res.status(404);
+		throw new Error('PRODUCT NOT FOUND')
+	}
+});
+
+
+//DELETE
 const deleteNote = asyncHandler(async (req, res) => {
 	const notes = await Note.findById(req.params.id);
 
@@ -52,4 +79,4 @@ const deleteNote = asyncHandler(async (req, res) => {
 	}
 });
 
-export { getNoteById, getNotes, postNote, deleteNote };
+export { getNoteById, getNotes, postNote, deleteNote,updateNote };

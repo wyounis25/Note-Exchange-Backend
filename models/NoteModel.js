@@ -22,13 +22,30 @@ const noteSchema = mongoose.Schema(
 			type: mongoose.Schema.Types.ObjectId,
 			required: true,
 			ref: 'User'
-		}
-    },
+		},
+		experiences: [
+			{
+				review: {
+					type: String,
+					required: true
+				},
+				rating: {
+					type: Number,
+					required: true,
+					default: 0
+				},
+				user: {
+					type: mongoose.Schema.Types.ObjectId,
+					ref: 'User'
+				}
+			}
+		]
+	},
 	{
 		timestamps: true
 	}
 );
 
-const Notes = mongoose.model('Notes',noteSchema)
+const Note = mongoose.model('Note', noteSchema);
 
-export default Notes
+export default Note;

@@ -1,6 +1,5 @@
 import Note from '../models/NoteModel.js';
 import asyncHandler from 'express-async-handler';
-import User from '../models/UserModel.js';
 
 // DESC FETCH ALL NOTES
 // ROUTE  GET  NOTE

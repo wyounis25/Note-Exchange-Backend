@@ -7,17 +7,20 @@ const experienceSchema = mongoose.Schema(
 			ref: true,
 			ref: 'Notes'
 		},
-		
 		review: {
 			type: String,
-			ref: true,
-			ref: 'Notes'
+			required: true,
 		},
 		rating: {
 			type: Number,
-			ref: true,
+			required: true,
 			default: 0
-		}
+		},
+		user: {
+			type: mongoose.Schema.Types.ObjectId,
+			required: true,
+			ref: 'User'
+		},
     },
 	{
 		timestamps: true

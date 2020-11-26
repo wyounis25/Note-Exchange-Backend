@@ -1,10 +1,10 @@
 import express from 'express'
 import auth from './auth.js'
 const router = express.Router()
-import { getNotes, getNoteById, postNote,deleteNote } from '../controllers/noteController.js'
+import { getNotes, getNoteById, postNote,deleteNote, updateNote } from '../controllers/noteController.js'
 
 router.route('/').get(getNotes)
-router.route('/:id').get(getNoteById).delete(deleteNote)
+router.route('/:id').get(getNoteById).delete(deleteNote).patch(updateNote)
 router.route('/').post(postNote)
 
 

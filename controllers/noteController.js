@@ -5,6 +5,7 @@ import User from '../models/UserModel.js';
 // DESC FETCH ALL NOTES
 // ROUTE  GET  NOTE
 // ACESS PUBLIC
+
 const getNotes = asyncHandler(async (req, res) => {
 	const notes = await Note.find({});
 	res.json(notes);
@@ -45,20 +46,19 @@ const postNote = asyncHandler(async (req, res) => {
 	}
 });
 
-
 // UPDATE
 const updateNote = asyncHandler(async (req, res) => {
 	const { category, label, content, price } = req.body;
-	const notes = await Note.findById(req.params.id);
+	const note = await Note.findById(req.params.id);
 
 
-	if (notes) {
-		notes.category = category
-		notes.label = label
-		notes.content = content
-		notes.price = price
+	if (note) {
+		note.category = category
+		note.label = label
+		note.content = content
+		note.price = price
 
-		const updateNote = await prdouct.save()
+		const updateNote = await note.save()
 		res.json(updateNote)
 	} else {
 		res.status(404);

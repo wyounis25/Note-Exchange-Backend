@@ -44,6 +44,45 @@ const postNote = asyncHandler(async (req, res) => {
 		throw new Error('Invalid information');
 	}
 });
+//POST EXPERIENCE
+
+const postReview = asyncHandler(async (req, res) => {
+	const { review, rating, user } = req.body;
+	const note = await Note.findById(req.params.id)
+
+	if (note) {
+		const alreadyReviewd = note.experiences.find(r => r.user.toString()=== req.user._id.toString())
+
+		if (alreadyReviewd) {
+			res.status(400)
+			throw new Error('Note already reviewd')
+		}
+
+		const newNote = await Note.create({
+			name: req.user.name,
+			review,
+			rating : Number(rating),
+			user: req.user._id
+		});
+
+		note.experiences.push(newNote)
+		res.status(201).json({message: 'Review added'})
+	} else {
+		res.status(404)
+		throw new Error('notes not found')
+	}
+
+
+
+	if (newNote) {
+		res.status(200).json(newNote);
+	} else {
+		res.status(400);
+		throw new Error('Invalid information');
+	}
+});
+
+
 
 // UPDATE
 const updateNote = asyncHandler(async (req, res) => {
@@ -77,4 +116,4 @@ const deleteNote = asyncHandler(async (req, res) => {
 	}
 });
 
-export { getNoteById, getNotes, postNote, deleteNote,updateNote };
+export { getNoteById, getNotes, postNote, deleteNote,updateNote,postReview };

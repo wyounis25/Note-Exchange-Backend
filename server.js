@@ -4,8 +4,6 @@ import dotenv from 'dotenv';
 import connectDB from './config/db.js';
 import noteRoutes from './routes/notesroutes.js';
 import userRoutes from './routes/usersroutes.js';
-import experienceRoutes from './routes/experienceroutes.js'
-
 // const connection_url = "mongodb+srv://admin:yzbsrZaIS225waQt@notes.ivma7.mongodb.net/note-exange?retryWrites=true&w=majority"
 dotenv.config();
 //App Config
@@ -19,9 +17,6 @@ app.use(Cors());
 app.use(express.json())
 app.use('/notes', noteRoutes);
 app.use('/users', userRoutes);
-app.use('/experiences', experienceRoutes);
-
-
 // app.delete('/notes/:id', async (req,res)=> {
 // 	const id = req.params.id;
 // 	await Note.Findby

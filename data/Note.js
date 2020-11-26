@@ -7,19 +7,19 @@ const notes = [
 		user: null,
 		experiences: [
 			{
-				review: 'Pretty  Notes',
-				rating: 10,
+				review: 'it is what it is',
+				rating: 2,
 				user: null,
 			},
 			{
-				review: 'Pretty  Notes',
-				rating: 10,
+				review: 'excellent',
+				rating: 4,
 				user: null,
 	
 			},
 			{
-				review: 'Pretty  Notes',
-				rating: 10,
+				review: 'its Alright',
+				rating: 2,
 				user: null,
 			
 			}
@@ -35,17 +35,17 @@ const notes = [
 		experiences: [
 			{
 				review: 'Pretty  Notes',
-				rating: 10,
+				rating: 1,
 				user: null,
 			},
 			{
 				review: 'Pretty  Notes',
-				rating: 10,
+				rating: 3,
 				user: null,
 			},
 			{
 				review: 'Pretty  Notes',
-				rating: 10,
+				rating: 1,
 				user: null,
 			}
 		]

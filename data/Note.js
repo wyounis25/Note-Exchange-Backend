@@ -10,17 +10,20 @@ const notes = [
 				review: 'it is what it is',
 				rating: 2,
 				user: null,
+				name: "bob"
 			},
 			{
 				review: 'excellent',
 				rating: 4,
 				user: null,
+				name: "bob"
 	
 			},
 			{
 				review: 'its Alright',
 				rating: 2,
 				user: null,
+				name: "bob"
 			
 			}
 		]
@@ -37,16 +40,19 @@ const notes = [
 				review: 'Pretty  Notes',
 				rating: 1,
 				user: null,
+				name: "bob"
 			},
 			{
 				review: 'Pretty  Notes',
 				rating: 3,
 				user: null,
+				name: "bob"
 			},
 			{
 				review: 'Pretty  Notes',
 				rating: 1,
 				user: null,
+				name: "bob"
 			}
 		]
 	}

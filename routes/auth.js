@@ -11,7 +11,8 @@ const auth = (req , res, next) => {
         res.user = verified.id
         next()
     } catch (err) {
-        res.status(500).json({error: err.message})
+        
+        return res.status(500).json({error: err.message})
     }
 
 }

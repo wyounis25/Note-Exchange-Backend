@@ -14,7 +14,6 @@ const getNotes = asyncHandler(async (req, res) => {
 // ROUTE  GET  NOTE/:ID
 // ACESS PUBLIC
 
-
 //GET
 const getNoteById = asyncHandler(async (req, res) => {
 	const note = await Note.findById(req.params.id);
@@ -24,7 +23,6 @@ const getNoteById = asyncHandler(async (req, res) => {
 		res.status(404).json({ message: 'note not found' });
 	}
 });
-
 
 //POST
 const postNote = asyncHandler(async (req, res) => {
@@ -47,32 +45,30 @@ const postNote = asyncHandler(async (req, res) => {
 //POST EXPERIENCE
 
 const postReview = asyncHandler(async (req, res) => {
-	const { review, rating, user } = req.body;
-	const note = await Note.findById(req.params.id)
+	const { review, rating } = req.body;
+	const note = await Note.findById(req.params.id);
 
 	if (note) {
-		const alreadyReviewd = note.experiences.find(r => r.user.toString()=== req.user._id.toString())
+		const alreadyReviewd = note.experiences.find((r) => r.user.toString() === req.user._id.toString());
 
 		if (alreadyReviewd) {
-			res.status(400)
-			throw new Error('Note already reviewd')
+			res.status(400);
+			throw new Error('Note already reviewd');
 		}
 
 		const newNote = await Note.create({
 			name: req.user.name,
 			review,
-			rating : Number(rating),
+			rating: Number(rating),
 			user: req.user._id
 		});
 
-		note.experiences.push(newNote)
-		res.status(201).json({message: 'Review added'})
+		note.experiences.push(newNote);
+		res.status(201).json({ message: 'Review added' });
 	} else {
-		res.status(404)
-		throw new Error('notes not found')
+		res.status(404);
+		throw new Error('notes not found');
 	}
-
-
 
 	if (newNote) {
 		res.status(200).json(newNote);
@@ -82,28 +78,45 @@ const postReview = asyncHandler(async (req, res) => {
 	}
 });
 
-
-
 // UPDATE
 const updateNote = asyncHandler(async (req, res) => {
 	const { category, label, content, price } = req.body;
 	const note = await Note.findById(req.params.id);
 
-
 	if (note) {
-		note.category = category
-		note.label = label
-		note.content = content
-		note.price = price
+		note.category = category;
+		note.label = label;
+		note.content = content;
+		note.price = price;
 
-		const updateNote = await note.save()
-		res.json(updateNote)
+		const updateNote = await note.save();
+		res.json(updateNote);
 	} else {
 		res.status(404);
-		throw new Error('PRODUCT NOT FOUND')
+		throw new Error('PRODUCT NOT FOUND');
 	}
 });
+// UPDATE
+const updateReview = asyncHandler(async (req, res) => {
+	const { review, rating, user, name } = req.body;
+	const note = await Note.findById(req.params.id);
 
+	if (note) {
+		const experience = {
+			review,
+			rating,
+			user,
+			name 
+		};
+
+		note.experiences.push(experience);
+		const updateNote = await note.save();
+		res.json(updateNote);
+	} else {
+		res.status(404);
+		throw new Error('PRODUCT NOT FOUND');
+	}
+});
 
 //DELETE
 const deleteNote = asyncHandler(async (req, res) => {
@@ -116,4 +129,4 @@ const deleteNote = asyncHandler(async (req, res) => {
 	}
 });
 
-export { getNoteById, getNotes, postNote, deleteNote,updateNote,postReview };
+export { getNoteById, getNotes, postNote, deleteNote, updateNote, postReview, updateReview };

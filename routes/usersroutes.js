@@ -1,7 +1,7 @@
 import express from 'express';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import {protect} from '../middleware/authMiddleware.js'
+// import {protect} from '../middleware/authMiddleware.js'
 import {registerUser, authUser,getUser,getUserById, getUserProfile} from '../controllers/userController.js'
 const userrouter = express.Router();
 
@@ -9,7 +9,7 @@ userrouter.route('/').post(registerUser)
 userrouter.route('/login').post(authUser)
 userrouter.route('/').get(getUser)
 userrouter.route('/:id').get(getUserById)
-userrouter.route('/profile').get(protect,getUserProfile)
+userrouter.route('/profile').get(getUserProfile)
 
 
 

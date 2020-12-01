@@ -7,7 +7,6 @@ const transactionsSchema = mongoose.Schema(
 			ref: true,
 			ref: 'User'
 		},
-		
 		note: {
 			type: mongoose.Schema.Types.ObjectId,
 			ref: true,
@@ -17,7 +16,6 @@ const transactionsSchema = mongoose.Schema(
 	{
 		timestamps: true
     }
-    
 );
 
 const Transaction = mongoose.model('Transaction',transactionsSchema)

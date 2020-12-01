@@ -108,7 +108,6 @@ const updateReview = asyncHandler(async (req, res) => {
 			user,
 			name 
 		};
-
 		note.experiences.push(experience);
 		const updateNote = await note.save();
 		res.json(updateNote);

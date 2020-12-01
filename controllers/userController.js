@@ -2,6 +2,7 @@ import User from '../models/UserModel.js';
 import asyncHandler from 'express-async-handler';
 import gentoken from '../util/token.js';
 import jwt from 'jsonwebtoken';
+import { updateNote } from './noteController.js';
 
 // DESC FETCH ALL USER
 // ROUTE  GET  USER
@@ -66,6 +67,26 @@ const registerUser = asyncHandler(async (req, res) => {
 	}
 });
 
+const updateCart = asyncHandler(async (req, res) => {
+	const { category, label, price,note } = req.body;
+	// console.dir(req.params.id)
+	const user = await User.findById(req.params.id);
+	if (user) {
+		const cart = {
+		category,
+		label,
+		price,
+		note 
+		};
+		user.carts.push(cart);
+		const update = await user.save();
+		res.json(update);
+	} else {
+		res.status(404);
+		throw new Error('USER NOT FOUND');
+	}
+});
+
 const getUserProfile = asyncHandler(async (req, res) => {
 	const user = await User.findById(req.user._id);
 	if (user) {
@@ -79,4 +100,4 @@ const getUserProfile = asyncHandler(async (req, res) => {
 	}
 });
 
-export { authUser, getUser, getUserById, getUserProfile, registerUser };
+export { authUser, getUser, getUserById, getUserProfile, registerUser,updateCart};

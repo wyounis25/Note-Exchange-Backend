@@ -4,20 +4,31 @@ const transactionsSchema = mongoose.Schema(
 	{
 		user: {
 			type: mongoose.Schema.Types.ObjectId,
-			ref: true,
+			required: true,
 			ref: 'User'
 		},
-		note: {
-			type: mongoose.Schema.Types.ObjectId,
-			ref: true,
-			ref: 'Notes'
-		}
-    },
+		amount: {
+			type: Number,
+			required: true
+		},
+		email: {
+			type: String,
+			required: true
+		},
+		notes: [
+			{
+				note: {
+					type: mongoose.Schema.Types.ObjectId,
+					required: true,
+					ref: 'Notes'
+				}
+			}
+		]
+	},
 	{
 		timestamps: true
-    }
+	}
 );
 
-const Transaction = mongoose.model('Transaction',transactionsSchema)
-export default Transaction
-
+const Transaction = mongoose.model('Transaction', transactionsSchema);
+export default Transaction;

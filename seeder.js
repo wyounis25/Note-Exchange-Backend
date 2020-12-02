@@ -1,6 +1,7 @@
 import mongoose from 'mongoose'
 import User from './models/UserModel.js'
 import Note from './models/NoteModel.js'
+import Transaction from './models/TransactionModel.js'
 import users from './data/User.js'
 import notes from './data/Note.js'
 import dotenv from 'dotenv'

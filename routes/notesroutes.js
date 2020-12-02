@@ -9,16 +9,6 @@ router.route('/').post(postNote)
 router.route('/experiences/:id/').patch(updateReview)
 
 
-
-// router.delete("/delete", auth, async (req, res) => {
-//   try {
-//     const deleteNote = await Note.findByIdAndDelete(req.note)
-//     res.json(deleteNote)
-//   } catch (err) {
-//     res.status(500).json({error: err.message})
-//   }
-// })
-
 export default router
 
 

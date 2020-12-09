@@ -2,13 +2,13 @@ import express from 'express';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 // import {protect} from '../middleware/authMiddleware.js'
-import {registerUser, authUser,getUser,getUserById, getUserProfile,updateCart} from '../controllers/userController.js'
+import {registerUser, authUser,getUser,getUserById, getUserProfile,updateCart,deletetrans} from '../controllers/userController.js'
 const userrouter = express.Router();
 
 userrouter.route('/').post(registerUser)
 userrouter.route('/login').post(authUser)
 userrouter.route('/').get(getUser)
-userrouter.route('/:id').get(getUserById)
+userrouter.route('/:id').get(getUserById).delete(deletetrans)
 userrouter.route('/profile').get(getUserProfile)
 userrouter.route('/carts/:id').patch(updateCart)
 

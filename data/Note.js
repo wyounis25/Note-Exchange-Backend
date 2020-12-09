@@ -7,19 +7,6 @@ const notes = [
 		user: null,
 		experiences: [
 			{
-				review: 'it is what it is',
-				rating: 2,
-				user: null,
-				name: "bob"
-			},
-			{
-				review: 'excellent',
-				rating: 4,
-				user: null,
-				name: "bob"
-	
-			},
-			{
 				review: 'its Alright',
 				rating: 2,
 				user: null,
@@ -30,60 +17,60 @@ const notes = [
 				review: 'it is what it is',
 				rating: 2,
 				user: null,
-				name: "bob"
+				name: "haley"
 			},
 			{
 				review: 'excellent',
 				rating: 4,
 				user: null,
-				name: "bob"
+				name: "raul"
 	
 			},
 			{
 				review: 'its Alright',
 				rating: 2,
 				user: null,
-				name: "bob"
+				name: "christina"
 			
 			},
 			{
 				review: 'it is what it is',
 				rating: 2,
 				user: null,
-				name: "bob"
+				name: "jake"
 			},
 			{
 				review: 'excellent',
 				rating: 4,
 				user: null,
-				name: "bob"
+				name: "joe"
 	
 			},
 			{
 				review: 'its Alright',
 				rating: 2,
 				user: null,
-				name: "bob"
+				name: "sam"
 			
 			},
 			{
 				review: 'it is what it is',
 				rating: 2,
 				user: null,
-				name: "bob"
+				name: "farzana"
 			},
 			{
 				review: 'excellent',
 				rating: 4,
 				user: null,
-				name: "bob"
+				name: "stephan"
 	
 			},
 			{
 				review: 'its Alright',
 				rating: 2,
 				user: null,
-				name: "bob"
+				name: "dane"
 			
 			}
 		]
@@ -539,3 +526,4 @@ const notes = [
 ];
 
 export default notes;
+// https://d20ohkaloyme4g.cloudfront.net/img/document_thumbnails/58dcccea76584b4b1a8f12919d9a5a63/thumb_1200_1553.png

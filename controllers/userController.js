@@ -89,6 +89,7 @@ const updateCart = asyncHandler(async (req, res) => {
 
 const getUserProfile = asyncHandler(async (req, res) => {
 	const user = await User.findById(req.user._id);
+
 	if (user) {
 		res.json({
 			_id: user._id,
@@ -100,4 +101,42 @@ const getUserProfile = asyncHandler(async (req, res) => {
 	}
 });
 
-export { authUser, getUser, getUserById, getUserProfile, registerUser,updateCart};
+const deletetrans = asyncHandler(async (req, res) => {
+	const user = await User.findById(req.params.id)
+	const item = user.carts.map(item => item.id === req.params.id)
+	// console.log(user.carts)
+	if(!item){
+		res.status(404);
+	 	throw new Error('ITEM NOT FOUND');
+	} 
+	user.carts.splice(item,1)
+	await user.save()
+	res.json(user.carts)
+	// if(cart.user.toString() !=req.user.id){
+	// 	res.status(404);
+	// 	throw new Error('USER NOT AUTHORIZED');
+	// }
+
+	// if (user){
+	// 	//console.log(cart)
+	// 	// user.carts.map(cart => {
+	// 	// 	if (cart._id === req.params.id){
+	// 	// 		console.log("found")
+	// 	// 	}
+	// 	// })
+	// } else {
+	// 	throw new Error('ITEM NOT FOUND');;
+	// }
+	// console.log(user)
+	//  console.log(user.carts)
+	//  console.log(item)
+	// if (item) {
+	// 	await item.remove();
+	// 	res.json({ msg: 'deleted' });
+	// } else {
+	// 	
+	// }
+});
+
+
+export { authUser, getUser, getUserById, getUserProfile, registerUser,updateCart,deletetrans};
